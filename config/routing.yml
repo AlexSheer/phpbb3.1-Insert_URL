@@ -1,0 +1,3 @@
+sheer_urlinsert_controller:
+    pattern: /urlinsert
+    defaults: { _controller: sheer.urlinsert.controller:main }
