@@ -1,0 +1,56 @@
+<!-- INCLUDE simple_header.html -->
+
+<script type="text/javascript">
+<!--
+	var form_name = 'postform';
+	if (window.opener.document.getElementById("qr_postform"))
+	{
+		form_name = 'qr_postform';
+	}
+	var text_name = 'message';
+
+	var optionsNumber = 2;
+	var optionsList = new Array(2);
+	var optionsKeys = new Array(2);
+
+	optionsList[0] = '{L_LINK}';
+	optionsKeys[0] = 'q_1';
+	optionsList[1] = '{L_URL}';
+	optionsKeys[1] = 'q_2';
+
+	function put_pattern()
+{
+		text = '[url='+document.forms['pattern'].elements[optionsKeys[1]].value+']'+document.forms['pattern'].elements[optionsKeys[0]].value+'[/url]';
+
+		insert_text(text, false, true);
+	}
+//-->
+</script>
+
+<script type="text/javascript" src="{T_ASSETS_PATH}/javascript/editor.js"></script>
+<form id="pattern" method="post" action="" onsubmit="return checkForm(this);" name="pattern">
+<div class="panel" id="patternbox">
+	<div class="inner">
+	<h3>{L_URL_PATTERN}</h3>
+		<fieldset>
+			<dl>
+				<dt><label for="0">{L_LINK}</label><br /><span>{L_LINK_EXPLAIN}</span></dt>
+				<dd><input type="text" tabindex="0" name="q_1" id="0" size="25" class="inputbox" /></dd>
+			</dl>
+			<dl>
+				<dt><label for="1">{L_URL}</label><br /><span>{L_URL_EXPLAIN}</span></dt>
+				<dd><input type="text" tabindex="1" name="q_2" id="1" size="25" class="inputbox" placeholder = "http://www.phpbbguru.net" /></dd>
+			</dl>
+		</fieldset>
+	</div>
+</div>
+<div class="panel bg3">
+	<div class="inner">
+		<fieldset class="submit-buttons">
+		<input type="submit" name="post" value="{L_SUBMIT}" class="button1" onclick="put_pattern();window.close();return false;" /><br />
+				<br /><a class="nav" href="#" onclick="window.close(); return false;">{L_CLOSE_WINDOW}</a>
+		</fieldset>
+	</div>
+</div>
+</form>
+<!-- INCLUDE simple_footer.html -->
