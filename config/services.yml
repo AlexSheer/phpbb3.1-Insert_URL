@@ -1,13 +1,7 @@
 services:
-    sheer.urlinsert.controller:
-        class: sheer\urlinsert\controller\urlinsert
-        arguments:
-            - @template
-            - @user
     sheer.urlinsert.listener:
         class: sheer\urlinsert\event\listener
         arguments:
             - @template
-            - @controller.helper
         tags:
             - { name: event.listener }
