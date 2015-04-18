@@ -26,8 +26,6 @@ class listener implements EventSubscriberInterface
 	{
 		return array(
 			'core.user_setup'					=> 'load_language_on_setup',
-			'core.posting_modify_template_vars'	=> 'add_popup_url',
-			'core.viewtopic_modify_page_title'	=> 'add_popup_url',
 		);
 	}
 
@@ -38,12 +36,10 @@ class listener implements EventSubscriberInterface
 	* Constructor
 	*/
 	public function __construct(
-		\phpbb\template\template $template,
-		\phpbb\controller\helper $controller_helper
+		\phpbb\template\template $template
 	)
 	{
 		$this->template = $template;
-		$this->controller_helper = $controller_helper;
 	}
 
 	public function load_language_on_setup($event)
@@ -54,12 +50,5 @@ class listener implements EventSubscriberInterface
 			'lang_set' => 'urlinsert',
 		);
 		$event['lang_set_ext'] = $lang_set_ext;
-	}
-
-	public function add_popup_url($event)
-	{
-		$this->template->assign_vars(array(
-			'POPUP_URL' => $this->controller_helper->route('sheer_urlinsert_controller'),
-		));
 	}
 }
